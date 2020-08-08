@@ -12,9 +12,9 @@ public class Scenario {
 	String[] params;
 	LinkedList<Flyable> aircrafts = new LinkedList<Flyable>();
 
-	public void readScenario() {
+	public void readScenario(String filePath) {
 		try {
-			File scenarioFile = new File("scenario.txt");
+			File scenarioFile = new File(filePath);
 			Scanner scanner = new Scanner(scenarioFile);
 
 			if (scanner.hasNextLine()) {
@@ -25,18 +25,19 @@ public class Scenario {
 				String data = scanner.nextLine();
 				params = data.split(" ");
 				aircrafts.add(AircraftFactory.newAircraft(
-						params[1],
 						params[0],
+						params[1],
 						Integer.parseInt(params[2]),
 						Integer.parseInt(params[3]),
 						Integer.parseInt(params[4])));
 			}
 			scanner.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("An error occurred.");
-			e.printStackTrace();
+			System.out.println("File not found");
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid coordinate");
 		} catch (Exception e) {
-			e.printStackTrace();
+			System.out.println("No such file exist: " + e.getMessage());
 		}
 	}
 }

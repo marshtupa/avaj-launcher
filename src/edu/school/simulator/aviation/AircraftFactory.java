@@ -11,8 +11,7 @@ public class AircraftFactory {
 			case "Baloon":
 				return new Baloon(name, new Coordinates(longitude, latitude, height));
 			default:
-				return null;
-//				throw new Exception();
+				throw new Exception(type);
 		}
 	}
 }
