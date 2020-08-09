@@ -17,4 +17,9 @@ public class Helicopter extends Aircraft implements Flyable{
     public void registerTower(WeatherTower weatherTower) {
 
     }
+
+    @Override
+    public String toString() {
+        return "Helicopter" + super.toString();
+    }
 }
