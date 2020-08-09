@@ -11,7 +11,7 @@ import java.util.Scanner;
 abstract public class Tower {
     int duration;
     String[] params;
-    LinkedList<Flyable> observers = new LinkedList<>();
+    private LinkedList<Flyable> observers = new LinkedList<>();
 
     public void initTower(String filePath) {
         try {
@@ -53,7 +53,20 @@ abstract public class Tower {
         System.out.println("Tower says: " + flyable.toString() + " registered to weather tower.");
     }
 
-    void unregister(Flyable flyable) { }
+    void unregister(Flyable flyable) {
+        observers.remove(flyable);
+        System.out.println("Tower says: " + flyable.toString() + " unregistered from weather tower.");
+    }
 
-    protected void conditionsChanged() { }
+    protected void conditionsChanged() {
+        for (Flyable observer: observers) {
+            observer.updateConditions();
+        }
+    }
+
+    protected LinkedList<Flyable> getObservers() {
+        return observers;
+    }
+
+    abstract void setTower();
 }

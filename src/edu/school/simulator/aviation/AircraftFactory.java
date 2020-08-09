@@ -1,7 +1,5 @@
 package edu.school.simulator.aviation;
 
-import java.util.LinkedList;
-
 public class AircraftFactory {
 	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height) throws Exception {
 		validateData(longitude, latitude, height);

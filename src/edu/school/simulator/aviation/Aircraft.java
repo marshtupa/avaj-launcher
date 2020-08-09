@@ -1,6 +1,6 @@
 package edu.school.simulator.aviation;
 
-public class Aircraft {
+abstract public class Aircraft {
     protected long id;
     protected String name;
     protected Coordinates coordinates;

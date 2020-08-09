@@ -1,5 +1,7 @@
 package edu.school.simulator.aviation;
 
+import static java.lang.Math.abs;
+
 public class Coordinates {
     private int longitude;
     private int latitude;
@@ -23,7 +25,13 @@ public class Coordinates {
         return height;
     }
 
+    public void update(int longitude, int latitude, int height) {
+        this.longitude += longitude;
+        this.latitude += latitude;
+        this.height += height;
+    }
+
     public int mixCoordinates() {
-        return getHeight() * (getLatitude() + getLongitude());
+        return abs(getHeight() * (getLatitude() + getLongitude()));
     }
 }
