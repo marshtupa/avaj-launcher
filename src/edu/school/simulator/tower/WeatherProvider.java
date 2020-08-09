@@ -2,11 +2,14 @@ package edu.school.simulator.tower;
 
 import edu.school.simulator.aviation.Coordinates;
 
-public class WeatherProvider {
-	private WeatherProvider weatherProvider;
-	private String weather;
+import java.util.Random;
 
-	WeatherProvider() {
+public class WeatherProvider {
+	static int random = new Random().ints(0, 4).findFirst().getAsInt();
+	private WeatherProvider weatherProvider;
+	private static String[] weather = {"SUN", "SNOW", "RAIN", "FOG"};
+
+	private WeatherProvider() {
 		weatherProvider = new WeatherProvider();
 	}
 
@@ -19,6 +22,8 @@ public class WeatherProvider {
 	}
 
 	public String getCurrentWeather(Coordinates coordinates) {
-		return "";
+		int index = coordinates.mixCoordinates() % random;
+
+		return weather[index];
 	}
 }

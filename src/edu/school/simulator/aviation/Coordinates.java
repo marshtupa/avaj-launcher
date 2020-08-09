@@ -10,4 +10,20 @@ public class Coordinates {
         this.latitude = latitude;
         this.height = height;
     }
+
+    public int getLongitude() {
+        return longitude;
+    }
+
+    public int getLatitude() {
+        return latitude;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
+    public int mixCoordinates() {
+        return getHeight() * (getLatitude() + getLongitude());
+    }
 }
