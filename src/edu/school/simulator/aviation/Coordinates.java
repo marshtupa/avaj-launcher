@@ -25,13 +25,22 @@ public class Coordinates {
         return height;
     }
 
-    public void update(int longitude, int latitude, int height) {
-        this.longitude += longitude;
-        this.latitude += latitude;
-        this.height += height;
+    public void update(int[] coordinates) {
+        this.longitude += coordinates[0];
+        this.latitude += coordinates[1];
+        this.height += coordinates[2];
     }
 
     public int mixCoordinates() {
         return abs(getHeight() * (getLatitude() + getLongitude()));
+    }
+
+    @Override
+    public String toString() {
+        return "Coordinates{" +
+                "longitude=" + longitude +
+                ", latitude=" + latitude +
+                ", height=" + height +
+                '}';
     }
 }

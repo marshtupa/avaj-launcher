@@ -1,5 +1,7 @@
 package edu.school.simulator.aviation;
 
+import edu.school.simulator.tower.WeatherTower;
+
 abstract public class Aircraft {
     protected long id;
     protected String name;

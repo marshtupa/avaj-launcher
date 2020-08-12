@@ -5,8 +5,7 @@ import java.util.Random;
 
 public class WeatherProvider {
 	private static WeatherProvider weatherProvider;
-	private static String[] weather = {"SUN", "SNOW", "RAIN", "FOG"};
-	private static int random = new Random().ints(0, weather.length).findFirst().getAsInt();
+	private static int random = (int)(Math.random() * 10);
 
 	private WeatherProvider() { }
 
@@ -18,9 +17,9 @@ public class WeatherProvider {
 		return weatherProvider;
 	}
 
-	public String getCurrentWeather(Coordinates coordinates) {
-		int index = coordinates.mixCoordinates() % random;
+	public int getCurrentWeather(Coordinates coordinates) {
+		int weatherIndex = (coordinates.mixCoordinates() % random) % 4;
 
-		return weather[index];
+		return weatherIndex;
 	}
 }

@@ -1,9 +1,11 @@
 package edu.school.simulator.aviation;
 
+import edu.school.simulator.tower.Tower;
 import edu.school.simulator.tower.WeatherTower;
 
 public class JetPlane extends Aircraft implements Flyable{
     private WeatherTower weatherTower;
+    int weatherRules[][] = {{0, 10,  2}, {0, 5,   0}, {0, 1,   0}, {0,  0, -7}};
 
     JetPlane(String name, Coordinates coordinates) {
         super(name, coordinates);
@@ -11,23 +13,15 @@ public class JetPlane extends Aircraft implements Flyable{
 
     @Override
     public void updateConditions() {
-        String weather = weatherTower.getWeather(coordinates);
-        switch (weather) {
-            case "SUN":
-                coordinates.update(0, 10, 2);
-            case "SNOW":
-                coordinates.update(0,  5,  0);
-            case "RAIN":
-                coordinates.update(0,  1,  0);
-            case "FOG":
-                coordinates.update(0,  0, -7);
-        }
+        int weatherIndex = weatherTower.getWeather(coordinates);
+
+        coordinates.update(weatherRules[weatherIndex]);
         System.out.println(this.toString() + ": update conditions");
     }
 
     @Override
-    public void registerTower(WeatherTower weatherTower) {
-        this.weatherTower = weatherTower;
+    public void registerTower(Tower tower) {
+        this.weatherTower = (WeatherTower)tower;
     }
 
     @Override

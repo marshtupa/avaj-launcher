@@ -68,5 +68,9 @@ abstract public class Tower {
         return observers;
     }
 
-    abstract void setTower();
+    void setTower(Tower tower) {
+        for (Flyable observer: observers) {
+            observer.registerTower(tower);
+        }
+    }
 }

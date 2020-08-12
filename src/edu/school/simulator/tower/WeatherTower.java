@@ -11,19 +11,12 @@ public class WeatherTower extends Tower {
     public WeatherTower(String filePath) {
         super.initTower(filePath);
         provider = provider.getProvider();
-        setTower();
+        setTower(this);
     }
 
-    public String getWeather(Coordinates coordinates) {
+    public int getWeather(Coordinates coordinates) {
         return provider.getCurrentWeather(coordinates);
     }
 
     void changeWeather() { }
-
-    @Override
-    void setTower() {
-        for (Flyable observer: super.getObservers()) {
-            observer.registerTower(this);
-        }
-    }
 }
