@@ -32,7 +32,7 @@ public class Coordinates {
     }
 
     public int mixCoordinates() {
-        return abs(getHeight() * (getLatitude() + getLongitude()));
+        return abs(getHeight() * (getLatitude() * getLongitude()));
     }
 
     @Override

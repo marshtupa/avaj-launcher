@@ -1,9 +1,6 @@
 package edu.school.simulator.tower;
 
 import edu.school.simulator.aviation.Coordinates;
-import edu.school.simulator.aviation.Flyable;
-
-import java.util.LinkedList;
 
 public class WeatherTower extends Tower {
     WeatherProvider provider;
@@ -18,5 +15,7 @@ public class WeatherTower extends Tower {
         return provider.getCurrentWeather(coordinates);
     }
 
-    void changeWeather() { }
+    protected void changeWeather() {
+        provider.changeWeather();
+    }
 }

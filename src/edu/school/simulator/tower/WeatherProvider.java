@@ -1,11 +1,10 @@
 package edu.school.simulator.tower;
 
 import edu.school.simulator.aviation.Coordinates;
-import java.util.Random;
 
 public class WeatherProvider {
 	private static WeatherProvider weatherProvider;
-	private static int random = (int)(Math.random() * 10);
+	private int seed;
 
 	private WeatherProvider() { }
 
@@ -18,8 +17,12 @@ public class WeatherProvider {
 	}
 
 	public int getCurrentWeather(Coordinates coordinates) {
-		int weatherIndex = (coordinates.mixCoordinates() % random) % 4;
+		int weatherIndex = (coordinates.mixCoordinates() / seed) % 4;
 
 		return weatherIndex;
+	}
+
+	protected void changeWeather() {
+		seed = (int)(Math.random() * 10) + 1;
 	}
 }

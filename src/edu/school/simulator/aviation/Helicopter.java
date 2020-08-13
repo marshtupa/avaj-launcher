@@ -2,6 +2,7 @@ package edu.school.simulator.aviation;
 
 import edu.school.simulator.tower.Tower;
 import edu.school.simulator.tower.WeatherTower;
+import edu.school.simulator.utils.Logger;
 
 public class Helicopter extends Aircraft implements Flyable {
     private WeatherTower weatherTower;
@@ -16,7 +17,7 @@ public class Helicopter extends Aircraft implements Flyable {
         int weatherIndex = weatherTower.getWeather(coordinates);
 
         coordinates.update(weatherRules[weatherIndex]);
-        System.out.println(this.toString() + ": update conditions");
+        Logger.logWeatherCondition(this, weatherTower.getWeather(coordinates));
     }
 
     @Override
